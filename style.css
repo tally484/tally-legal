@@ -1,0 +1,14 @@
+body {
+  max-width: 620px; margin: 0 auto; padding: 48px 24px 80px;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: #faf6ef; color: #2b2620; line-height: 1.65;
+}
+h1 { font-size: 34px; font-weight: 600; margin-bottom: 4px; }
+h2 { font-size: 19px; margin-top: 36px; }
+.sub { color: #8a8378; font-size: 14px; margin-top: 0; }
+a { color: #2b2620; }
+@media (prefers-color-scheme: dark) {
+  body { background: #211f1c; color: #e8e2d8; }
+  .sub { color: #97907f; }
+  a { color: #e8e2d8; }
+}
