@@ -8,76 +8,94 @@
 </head>
 <body>
 <h1>privacy policy</h1>
-<p class="sub">hexis — habit journal · effective 10 september 2026</p>
+<p class="sub">hexis — habit journal · effective 11 september 2026</p>
 
-<p>hexis is built to be private. the short version: <strong>your journal stays with you, and we never see it.</strong> the only times anything from it leaves your device are ones you choose — iCloud sync, a group you start or join, a backup you export, or a card you share — and even then it goes to Apple or to wherever you sent it, never to us. one thing does leave without your choosing it, and only one: the shop asks a service called RevenueCat whether you have paid. it is told nothing about your habits. <a href="#purchases">what it is told</a> is set out below.</p>
+<p>hexis is built to be private. the short version: <strong>your journal stays with you, and we never see it.</strong> there is no hexis server and no hexis account, so there is nowhere for your habits to go and no one here to read them. the only times anything leaves your device are ones you choose — iCloud sync, a group you start or join, a backup you export, a card you share, or an email you send us — and even then it goes to Apple or to whoever you sent it, never to a hexis system.</p>
 
 <p><em>hexis was called tally until august 2026. same app, same developer, same policy — this page moved with it, which is why its address still says tally.</em></p>
 
 <h2>what we collect</h2>
-<p>nothing about you, and nothing out of your journal. hexis has no analytics, no tracking, no advertising, no crash reporting, and no hexis account — there is no hexis server anywhere, so there is nowhere for your habits to go and no one here to read them.</p>
-
-<p>hexis carries <strong>one piece of third-party code</strong>: RevenueCat, which is how the app knows whether you have bought hexis+. it is the only part of hexis that speaks to anyone other than Apple, it runs only around a purchase, and <strong>no habit, mark, signature or contract is ever passed to it</strong>. what it does receive is under <a href="#purchases">purchases</a>.</p>
+<p>nothing about you, and nothing out of your journal. hexis has no analytics SDK, no tracking, no advertising, no attribution, no crash reporting, and no hexis account.</p>
+<p><strong>hexis carries no third-party code that reports anywhere.</strong> the app talks to Apple and to nobody else: the App&nbsp;Store for purchases, and iCloud for sync and groups. see <a href="#history">what changed</a> for a service that appeared in test builds and has since been taken out.</p>
+<p>the one way you can send us something is <a href="#contact-data">by writing to us</a> — a support email or a report from a group. that is set out below, because it is the one path where personal information can reach us, and only because you chose to send it.</p>
 
 <h2>where your data lives</h2>
-<p>your habits, their marks, streaks and settings are stored in a file on your device. what that file holds is the list of habits you made — each one's name, icon, target, cadence, reminder time, and which days you marked kept, rested, or mended — plus your signatures and any hexis contracts you signed. nothing else about you is in it.</p>
-<p>hexis also offers optional <strong>iCloud sync</strong>, off by default. when you turn it on in settings, that file is mirrored to your <em>private</em> iCloud, encrypted in transit and at rest and reachable only by your Apple&nbsp;ID — we have no way to read it. turning sync off stops further mirroring.</p>
-<p><strong>deleting the app removes the copy on your device.</strong> if iCloud sync was ever on, the mirrored copy stays in your own iCloud until you remove it there — iOS Settings&nbsp;›&nbsp;your&nbsp;name&nbsp;›&nbsp;iCloud&nbsp;›&nbsp;Manage&nbsp;Account&nbsp;Storage. we cannot remove it for you, and we cannot see it either.</p>
+<p>your habits, their marks, streaks, amounts and settings are stored in files on your device, inside the app's own storage. what they hold is the list of habits you made — each one's name, icon, target and amount, cadence, reminder time, and which days you marked kept, rested, or mended — your routines, and your signatures and the commitments you signed. nothing else about you is in them.</p>
+<p>hexis also offers optional <strong>iCloud sync</strong>, off by default. when you turn it on in settings, those files are mirrored to your <em>private</em> iCloud, encrypted in transit and at rest and reachable only by your Apple&nbsp;ID — we have no way to read it. turning sync off stops further mirroring.</p>
+<p><strong>deleting the app removes the copy on your device.</strong> if iCloud sync was ever on, the mirrored copy stays in your own iCloud until you remove it there — iOS Settings&nbsp;›&nbsp;your&nbsp;name&nbsp;›&nbsp;iCloud&nbsp;›&nbsp;Manage&nbsp;Account&nbsp;Storage. we cannot remove it for you, and we cannot see it either. if you host a group, deleting the app does <em>not</em> end that group — see <a href="#ending-a-group">leaving and ending a group</a>.</p>
+
+<h2>routines</h2>
+<p>a routine is a named block of your day, with an optional start time, a reminder, a repeat, and a timer. routines live in the same on-device storage as your habits and are mirrored by iCloud sync on the same terms. <strong>routines are never shared to a group</strong> — a group carries one habit's marks and nothing else. when a routine's timer is running it can show a Live Activity on your lock screen and Dynamic Island; that is drawn on your device from local state, with no push token and no server behind it.</p>
 
 <h2>your Apple Watch</h2>
-<p>if you install the watch app, hexis keeps a copy of your journal on the watch so you can mark a day without your phone. it carries your habit names, icons, cadences, contracts and which days are marked — enough to draw the same journal — and it travels straight between your two devices over Apple's device-to-device link. it does not pass through a server, and it does not pass through us.</p>
-<p><strong>your signature does not go to the watch.</strong> deleting the watch app removes the watch's copy.</p>
+<p>if you install the watch app, hexis keeps a copy of your journal on the watch so you can mark a day without your phone. it carries your habit names, icons, cadences, targets and which days are marked — enough to draw the same journal — and it travels straight between your two devices over Apple's device-to-device link. it does not pass through a server, and it does not pass through us.</p>
+<p><strong>your signature and your commitments do not go to the watch</strong>, and neither do your routines. deleting the watch app removes the watch's copy.</p>
 
 <h2>widgets and complications</h2>
 <p>the home screen widgets and the watch face complication read the same on-device journal and draw from it. they send nothing anywhere.</p>
 
 <h2>your signature</h2>
-<p>when you sign a commitment, hexis keeps what you drew as a set of points, on your device, alongside the habit you signed for. it is mirrored to your private iCloud if you have sync on. <strong>it is never shown to anyone else</strong> — not to a group, not to the watch, not to us.</p>
+<p>when you sign a commitment, hexis keeps what you drew as a set of points, on your device, alongside the habit you signed for. it is mirrored to your private iCloud if you have sync on.</p>
+<p><strong>hexis never shows it to anyone else</strong> — not to a group, not to the watch, not to us. the app has no feature that sends it. the one way it can reach another person is if <em>you</em> send it: a backup you export contains your signatures, and where that file goes afterwards is yours to decide. see <a href="#backups">backups you export</a>.</p>
 
 <h2>groups</h2>
 <p>a group lets a few people keep one habit side by side. it is entirely optional — nothing is shared until you start a group or accept an invite, and the rest of the app works the same either way.</p>
-<p>a group lives in a shared iCloud area hosted by the person who created it. Apple carries it; there is no hexis server, and we cannot read a group's contents.</p>
+<p>a group lives in a shared iCloud area hosted by the person who created it. Apple carries it; there is no hexis server, and we cannot read a group's contents or reach into it.</p>
 <p><strong>what the other members of a group can see:</strong></p>
 <ul>
-<li>the name you type for yourself when you join, the colour you are drawn in, and your device's time zone;</li>
+<li>the name you type for yourself when you join, the colour you are drawn in, your device's time zone, when you joined, and when you last published a change;</li>
 <li>for the <em>one</em> habit you point at that group, which days you marked kept, rested, or mended — the dates only;</li>
+<li>alongside those dates, a small <strong>edit receipt</strong> for each day you recently changed: what you set that day to, and the moment you set it. this is what lets a day you <em>cleared</em> stay cleared when two of your own devices meet, instead of being silently restored. receipts are kept for about 90 days and then dropped;</li>
 <li>if you created the group: the group's name, plus the name, icon, and weekly cadence of the habit you built it around.</li>
 </ul>
-<p><strong>what never leaves your device:</strong> every other habit in your journal, and everything private about the habit you did share — its amounts, its reminders, its contracts, and your signature. a group carries dates and a display name, nothing more.</p>
+<p><strong>what never leaves your device:</strong> every other habit in your journal, your routines, and everything private about the habit you did share — its amounts, its reminders, its commitments, and your signature. a group carries dates, timings, and a display name, nothing more.</p>
 <p><strong>how you are identified in a group.</strong> Apple issues hexis an identifier for your iCloud account, scoped to this app. that is what marks your row as yours. it is not your Apple&nbsp;ID, your email, or your real name, and we never see it — but it <em>is</em> the same identifier in every group you share with someone, which is what lets blocking follow a person from one group to another.</p>
-<p><strong>the invite is a link, and anyone who has it can join</strong> and see the group. share it only with people you mean to let in. the app says this where the invite is created.</p>
-<p>you can leave a group at any time; your member record is removed from it and your own marks stay in your journal, untouched. the person who created a group hosts it — if they end it, or delete the app, the group ends for everyone in it.</p>
-<p>if you report someone, the report is composed on your device as an email to the address at the foot of this page, and you send it. it names the group, the member, and whatever you choose to write. we read it and act on it; it goes nowhere else.</p>
+<p><strong>the invite is a link, and anyone who has it can join</strong> and see the group. it is not restricted to a person you named, and a link passed on works for whoever receives it. share it only with people you mean to let in. the app says this where the invite is created.</p>
 
-<h2>backups you export</h2>
-<p>exporting a backup writes your whole journal — every habit, every mark, your signatures and contracts — into a single file that you then save or send wherever you choose. from that moment the file is yours to look after: it is no longer inside the app's protection, and we have no part in where it goes.</p>
+<h2 id="ending-a-group">leaving and ending a group</h2>
+<p>you can <strong>leave</strong> a group at any time from the group's screen. your member record — your name, colour and shared dates — is deleted out of the group, and your own marks stay in your journal, untouched.</p>
+<p>if you <em>created</em> a group, the same screen offers <strong>end group</strong>. that is the action that deletes the shared iCloud area and everything in it, for everyone. <strong>deleting the app does not do this.</strong> an uninstall removes your device's copy, but the shared area stays in your iCloud and the group stays alive for the members you invited. to remove it, end the group from inside the app before you delete it — or, if the app is already gone, reinstall it, open the group, and end it there.</p>
+
+<h2>notifications</h2>
+<p>hexis uses two different things that both arrive as notifications, and they are worth telling apart.</p>
+<p><strong>reminders you set are local notifications</strong> — for habits and for routines — scheduled and delivered by your own device. they name the habit or routine they are for, so they are as private as your lock screen is. they never touch a server.</p>
+<p><strong>groups use silent background notifications.</strong> if you start or join a group, hexis registers with Apple's push service so iCloud can tell the app that something in the group changed. these carry no message, make no sound, and show nothing on your screen; they exist only to wake the app long enough to fetch the change, so a group stays current without you opening it. they come from Apple's iCloud, addressed to your device — we neither send them nor see them. if you never use groups, nothing ever sends you one.</p>
+
+<h2>purchases</h2>
+<p>the money is Apple's business, not ours. subscriptions, any free trial, and the older one-time unlock are all handled through the App&nbsp;Store, on your App&nbsp;Store account. <strong>we never see your payment details</strong> — no card, no billing address, nothing of the sort ever reaches us or anyone acting for us.</p>
+<p>to work out what to unlock, <strong>hexis reads Apple's purchase record on the device itself</strong>, through Apple's StoreKit. that check happens between your device and Apple. no third party is asked, nothing about your journal is involved, and no identifier for you is created or sent anywhere. because the check is local, a phone that has not been online since you bought hexis+ still has it.</p>
+<p>you can manage or cancel a subscription in your App&nbsp;Store account settings.</p>
+
+<h2 id="history">what changed, and what came out</h2>
+<p>an earlier version of this page — dated 10 september 2026 — said hexis used a service called <strong>RevenueCat</strong> to check whether you had paid. that was written for a build in testing. <strong>it has been removed.</strong> the code is out of the app, and purchase checks now run against Apple alone, as described above.</p>
+<p>to be precise about what did and did not happen: RevenueCat was present only in pre-release builds distributed through TestFlight during september 2026, and <strong>no version released on the App&nbsp;Store has ever included it</strong>. for the small number of testers who ran one of those builds, the service was sent that build's App&nbsp;Store purchase receipt and basic device details under an anonymous identifier; it was never given a name, an email address, an Apple&nbsp;ID, or an advertising identifier, and it was never given anything out of a journal. if you tested one of those builds and want that record removed, <a href="#contact">write to us</a> and we will ask for its deletion.</p>
+<p>before september 2026 hexis contained no third-party code at all. as of this version, it does not again.</p>
+
+<h2>diagnostics kept on your device</h2>
+<p>hexis writes a small log of its own first-run steps — that onboarding began, that a habit was made, that a day was first marked, that the hexis+ page was shown — with a timestamp on each. <strong>this is stored on your device and is not sent anywhere.</strong> there is no analytics service behind it and no code in the app that transmits it; it exists so the app's own screens can be reasoned about, and it goes when you delete the app. it holds no habit names, no marks, and nothing that identifies you.</p>
+
+<h2 id="backups">backups you export</h2>
+<p>exporting a backup writes your whole journal into a single file that you then save or send wherever you choose. <strong>that file contains everything</strong> — every habit and its amounts, every mark, your routines, your mend balance, and your signatures and the commitments you signed.</p>
+<p>from the moment you export it, the file is yours to look after: it is no longer inside the app's protection, and we have no part in where it goes. if you send a backup to someone, you are sending them your signatures too. restoring a backup reads it straight back into the app on your device.</p>
 
 <h2>sharing a card</h2>
 <p>when you share your progress, the image is drawn on your device and handed to whatever you share it to. what happens next is that app's business, under its rules rather than ours. hexis copies to your clipboard and shares out; it never reads your clipboard.</p>
 
-<h2 id="purchases">purchases</h2>
-<p>the money is Apple's business, not ours. subscriptions, any free trial, and the older one-time unlock are all handled through the App&nbsp;Store, on your App&nbsp;Store account. <strong>we never see your payment details</strong> — no card, no billing address, nothing of the sort ever reaches us or anyone acting for us.</p>
-
-<p>to work out what to unlock, hexis uses <strong>RevenueCat</strong> (RevenueCat,&nbsp;Inc., United&nbsp;States), which reads Apple's purchase receipt and answers one question: does this device have hexis+? for that it is sent the App&nbsp;Store receipt and purchase history <em>for this app</em> — which plan, when it was bought, whether it is in a trial, when it renews or lapsed — together with the device's platform, operating system, app version, language and country, and the IP address the request arrives on, which it uses to place the purchase in a country and not to locate you.</p>
-
-<p><strong>it is not given a name, an email address, your Apple&nbsp;ID, or an advertising identifier.</strong> hexis has no accounts, so there is no name to give: the app asks RevenueCat to issue an anonymous identifier instead of supplying one, and the record it keeps is that random string. RevenueCat can be asked by an app to collect device and advertising identifiers for ad attribution — hexis never asks, and runs no attribution or marketing tracking of any kind. RevenueCat handles this on our behalf, under <a href="https://www.revenuecat.com/privacy/" rel="noopener">its own privacy policy</a>; we use it to see whether a purchase is live, and it is not sold or handed on for advertising.</p>
-
-<p>the hexis+ page itself is fetched from RevenueCat too, so its wording and its prices can be corrected without shipping a new version of the app.</p>
-
-<p>if RevenueCat can't be reached, nothing you paid for is lost: hexis also checks Apple's receipt on the device itself, and takes either answer as a yes — so a phone that has not been online since you bought hexis+ still has it.</p>
-
-<p>you can manage or cancel a subscription in your App&nbsp;Store account settings.</p>
-
-<h2>notifications</h2>
-<p>habit reminders are local notifications, scheduled and delivered on your device. they name the habit they are for, so they are as private as your lock screen is. they never touch a server, and hexis has no push notifications of any kind.</p>
+<h2 id="contact-data">when you write to us</h2>
+<p>two things in the app compose an email to us: <strong>support</strong>, and a <strong>report</strong> about someone in a group. both are written on your device and sent by you, from your own mail app — hexis does not send them for you, and nothing is transmitted if you close the draft.</p>
+<p><strong>what we receive.</strong> a support email brings whatever you write, plus your email address because you sent it, and — from the support link inside the app — your hexis version. a report brings the group's name, the member you are reporting, the identifier that marks their row, the reason you picked, and anything you add. if you attach a backup or a screenshot to help us with a problem, we receive that too, so send only what you mean to.</p>
+<p><strong>what we do with it.</strong> we read it, answer it, and act on it. reports are used to deal with the behaviour reported and nothing else. we do not sell any of it, we do not use it for marketing, and we do not pass it on except where the law requires it.</p>
+<p><strong>how long we keep it.</strong> your message sits in the developer's mailbox, which is an ordinary email account, for as long as it is useful — to answer you, to fix the thing you found, and to keep a short record of reports so that a repeat offender is recognisable. we do not build a profile of you from it.</p>
+<p><strong>deletion.</strong> write to the address at the foot of this page and ask, and we will delete the correspondence we hold from you. a report may need to be kept in a minimal form — that a report was made, and about whom — where deleting it would undo a safety measure still in force.</p>
 
 <h2>children</h2>
-<p>hexis does not knowingly collect personal information from anyone, including children — because it collects no personal information at all.</p>
+<p>hexis is not directed at children, and there is no hexis account to create. the app collects nothing about anyone into any system of ours — a child using hexis writes only to their own device and, if they turn it on, their own iCloud.</p>
+<p>the one exception is the same one that applies to everybody: if a child writes to us, that email reaches us like any other. we do not knowingly solicit personal information from children, and if we learn that a child has sent us personal information we will delete it. a parent or guardian can ask us to do the same, at the address below.</p>
 
 <h2>changes</h2>
-<p>if this policy ever changes, the new version will be posted here with a new effective date. the previous version of this page said hexis contained no third-party code at all; that was true until september&nbsp;2026, when RevenueCat was added to handle purchases, and this version says so.</p>
+<p>if this policy ever changes, the new version will be posted here with a new effective date. this version (11 september 2026) removes RevenueCat, which is no longer in the app; separates the silent background notifications groups use from the reminders you set; corrects what deleting the app does to a group you host; describes the edit receipts a group now carries; and says plainly what a support email or a report brings us. the previous version's account of those things is superseded.</p>
 
-<h2>contact</h2>
-<p>questions? write to <a href="mailto:martyelenjikkal@gmail.com">martyelenjikkal@gmail.com</a>.</p>
+<h2 id="contact">contact</h2>
+<p>questions, or a request about your data? write to <a href="mailto:martyelenjikkal@gmail.com">martyelenjikkal@gmail.com</a> and it reaches the developer directly.</p>
 </body>
 </html>
