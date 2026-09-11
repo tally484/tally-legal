@@ -1,5 +1,6 @@
 """Flatten the published terms page into the plain text ASC's custom EULA field takes."""
 import re, html, io
+from urllib.parse import urljoin
 
 src = io.open('/Users/martyelenjikkal/tally-legal/terms.html', encoding='utf-8').read()
 body = src.split('<body>', 1)[1].split('</body>')[0]
@@ -7,6 +8,11 @@ body = src.split('<body>', 1)[1].split('</body>')[0]
 out = []
 for m in re.finditer(r'<(h1|h2|h3|p|li)([^>]*)>(.*?)</\1>', body, re.S):
     tag, inner = m.group(1), m.group(3)
+    # Keep actual legal links when flattening HTML for App Store Connect.
+    inner = re.sub(r'<a\s+href="([^"]+)"[^>]*>(.*?)</a>',
+                   lambda a: a.group(2) if a.group(1).startswith('mailto:')
+                   else a.group(2) + ' (' + urljoin('https://tally484.github.io/tally-legal/', a.group(1)) + ')',
+                   inner, flags=re.S)
     t = re.sub(r'<[^>]+>', '', inner)
     t = html.unescape(t).replace(' ', ' ')
     t = re.sub(r'\s+', ' ', t).strip()

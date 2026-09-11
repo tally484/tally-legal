@@ -2,7 +2,7 @@ TERMS OF USE
 
 hexis — habit journal · effective 11 september 2026
 
-these terms are the agreement between you and Martin Elenjikkal ("we", "us"), the developer of hexis. by downloading or using hexis, you accept them. Apple is not a party to this agreement — see apple's part at the end.
+these terms are the agreement between you and Martin Elenjikkal ("we", "us"), the developer of hexis. by downloading or using hexis, you accept them. Apple is not a party to this agreement — see apple's part (https://tally484.github.io/tally-legal/#apple) at the end.
 
 hexis was called tally until august 2026. same app, same developer, same terms — this page moved with it, which is why its address still says tally.
 
@@ -14,7 +14,7 @@ Family Sharing and volume purchasing. where the App Store's Usage Rules allow it
 
 YOUR JOURNAL IS YOURS
 
-the habits, routines, marks, signatures and commitments you keep in hexis belong to you. we claim nothing over them, and — as the privacy policy sets out — we can't see them: there is no hexis server and no hexis account. keeping your own copy is your responsibility. optional iCloud sync mirrors your journal to your private iCloud so your devices agree; it is a convenience, not a backup service, and we can't restore data for you. exporting a backup hands you a file with everything in it, signatures included — where that file goes afterwards is yours to look after.
+the habits, routines, marks and signatures you keep in hexis belong to you. there is no hexis server or hexis account, and the app does not send your journal to the developer automatically. if you deliberately send a backup or screenshot to support, we receive what you send, as the privacy policy (https://tally484.github.io/tally-legal/privacy.html) explains. keeping your own copy is your responsibility. optional iCloud sync mirrors your habits and related journal state to your private iCloud, but not your routines. it is a convenience, not a backup service, and we cannot restore data for you. exported backups include your habits, routines and signatures; protect the file and share it only intentionally.
 
 HEXIS+
 
@@ -28,17 +28,17 @@ parts of hexis are paid. hexis+ is sold as two auto-renewing subscriptions — y
 - plans we no longer sell are still honoured. hexis has previously sold a monthly subscription and a one-time lifetime unlock. neither is offered for sale any more and neither can be bought now — but if you already hold one, it keeps hexis+ on exactly the terms you bought it on: a lifetime unlock does not renew and does not expire, and a monthly subscription goes on renewing monthly until you cancel it.
 - purchases restore on any device signed in to the same Apple ID.
 
-refunds are handled by Apple under the App Store's terms, not by us. to know whether you hold hexis+, the app reads Apple's own purchase record on your device and asks no one else — the privacy policy says so in full.
+refunds are handled by Apple under the App Store's terms, not by us. to know whether you hold hexis+, the app reads Apple's own purchase record on your device and asks no one else — the privacy policy (https://tally484.github.io/tally-legal/privacy.html) says so in full.
 
 prices, and changes to them. we may change what hexis+ costs or what is in it. a new price applies to new purchases; it never applies to a period you have already paid for, and it does not by itself change what an existing subscriber pays at renewal — if you are on an earlier price, you keep it unless and until a change is applied to your subscription. where a change would raise the price you renew at, Apple tells you in advance: depending on the size of the increase and where you live, Apple will either ask you to agree before it takes effect, or apply it after giving you notice and the chance to cancel first. if a paid feature is withdrawn during a period you have paid for, write to us.
 
 THE HEXIS CONTRACT
 
-hexis lets you commit to a habit for a set term, sign it in your own hand, and hold yourself to it — optionally in a stricter mode, with a daily gate. it is a commitment device, not a legal agreement. it binds you to nothing outside the app. we are not a party to it, nobody else is either, no money turns on it, and breaking one has no consequence beyond what the app draws on the page. your signature is a drawing kept on your device; it is not an electronic signature for any legal purpose, and hexis never shows it to anyone else. the one way it can reach another person is a backup you export and send yourself.
+a signature or commitment recorded in hexis is a personal reminder, not a contract with the developer or with another person. it creates no payment obligation or consequence outside the app. a signature is stored as a drawing and can be included in private iCloud sync, the habit snapshot sent to your paired watch, and backups you export. the watch does not display the signature. it is not shared with group members or sent to the developer automatically. see the privacy policy (https://tally484.github.io/tally-legal/privacy.html) for these transfers and deliberate sharing.
 
 GROUPS, AND HOW TO BEHAVE IN ONE
 
-a group lets a few people keep one habit side by side. it is optional and carries very little: a display name you choose, and which days you marked. what a group shares is described in the privacy policy.
+a group lets a few people keep one habit side by side. it is optional and carries very little: a display name you choose, and which days you marked. what a group shares is described in the privacy policy (https://tally484.github.io/tally-legal/privacy.html).
 
 an invite is a link, and it works for anyone who has it — not only the person you sent it to. if it is passed on, whoever receives it can join and see the group. share it only with people you mean to let in. you are responsible for what you write and for who you invite.
 
@@ -50,9 +50,9 @@ every member's row in a group carries a report and a block control. blocking tak
 
 we read every report and respond within 24 hours. we will also tell you honestly what we can and cannot reach:
 
-- the block is the removal, and it is immediate and permanent. it is not a request, it does not wait on us, and it does not expire — the moment you use it, that person and everything they have written is gone from your copy of hexis. that is the fastest and most complete remedy available, and it is entirely in your hands.
+- blocking hides a member's row and activity from you immediately. it remains in effect until you undo it or remove the app's local block settings. it does not delete their shared records, prevent them from seeing your shared information, or remove the group's name or other group-level content. leave the group if you do not want to keep sharing with its members.
 - you can leave any group at once, and if you created a group you can end it for everyone — which deletes the shared area and all of its contents. both controls are on the group's screen, beneath the members.
-- a group lives in its creator's own iCloud, not on any server of ours, and we have no access to it. that is the privacy guarantee this app is built on, and the cost of it is that we cannot reach into someone's group and delete their words ourselves. what we do instead, on a report: we act on the account behind it under these terms, we ask the group's creator to end it where the group itself is the problem, and we tell you the steps that end it on your side for good.
+- a group lives in its creator's own iCloud, not on a developer-operated server. we cannot directly delete its contents or suspend another person's Apple Account. after a report, we review the information you provide, explain the available safety controls, and may request the creator's cooperation where contact is possible. ending a licence under these terms is not the same as technically preventing access to a CloudKit group.
 - we may end your licence to use hexis where these terms are broken, and we will report unlawful behaviour to Apple or to the authorities where that is the right response.
 
 you can also reach us directly at martyelenjikkal@gmail.com.
@@ -67,7 +67,7 @@ hexis is provided as it is. beyond what the law requires, we make no promise tha
 
 ENDING IT
 
-you can stop using hexis at any time by deleting it; that deletes the journal held on your device. if you had iCloud sync on, the mirrored copy stays in your own iCloud until you remove it there — the privacy policy says where. if you host a group, end it in the app before you delete the app, or the group stays alive for its members in your iCloud. we may end this licence if these terms are broken. the clauses about warranty, liability, and Apple's part survive.
+you can stop using hexis at any time by deleting it; that deletes the journal held on your device. if you had iCloud sync on, the mirrored copy stays in your own iCloud until you remove it there — the privacy policy (https://tally484.github.io/tally-legal/privacy.html) says where. if you host a group, end it in the app before you delete the app, or the group stays alive for its members in your iCloud. we may end this licence if these terms are broken. the clauses about warranty, liability, and Apple's part survive.
 
 APPLE'S PART
 
