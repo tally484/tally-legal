@@ -2,7 +2,7 @@ TERMS OF USE
 
 hexis — habit journal · effective 11 september 2026
 
-these terms are the agreement between you and Martin Elenjikkal ("we", "us"), the developer of hexis. by downloading or using hexis, you accept them. Apple is not a party to this agreement — see apple's part (https://tally484.github.io/tally-legal/#apple) at the end.
+these terms are the agreement between you and Martin Elenjikkal ("we", "us"), the developer of hexis. by downloading or using hexis, you accept them. Apple is not a party to this agreement — see apple's part (https://tally484.github.io/tally-legal/terms.html#apple) at the end.
 
 hexis was called tally until august 2026. same app, same developer, same terms — this page moved with it, which is why its address still says tally.
 

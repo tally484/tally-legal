@@ -11,7 +11,7 @@ for m in re.finditer(r'<(h1|h2|h3|p|li)([^>]*)>(.*?)</\1>', body, re.S):
     # Keep actual legal links when flattening HTML for App Store Connect.
     inner = re.sub(r'<a\s+href="([^"]+)"[^>]*>(.*?)</a>',
                    lambda a: a.group(2) if a.group(1).startswith('mailto:')
-                   else a.group(2) + ' (' + urljoin('https://tally484.github.io/tally-legal/', a.group(1)) + ')',
+                   else a.group(2) + ' (' + urljoin('https://tally484.github.io/tally-legal/terms.html', a.group(1)) + ')',
                    inner, flags=re.S)
     t = re.sub(r'<[^>]+>', '', inner)
     t = html.unescape(t).replace(' ', ' ')
