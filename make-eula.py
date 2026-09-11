@@ -11,7 +11,7 @@ Updated 12 September 2026
 Hexis uses Apple's Standard End User License Agreement:
 https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
-Supplementary subscription information and community rules:
+Supplementary subscription information:
 https://tally484.github.io/tally-legal/terms.html
 
 Privacy Policy:
