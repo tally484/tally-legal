@@ -1,39 +1,27 @@
-"""Flatten the published terms page into the plain text ASC's custom EULA field takes."""
-import re, html, io
-from urllib.parse import urljoin
+"""Maintain the legacy eula.txt URL as a notice, never a custom ASC agreement.
 
-src = io.open('/Users/martyelenjikkal/tally-legal/terms.html', encoding='utf-8').read()
-body = src.split('<body>', 1)[1].split('</body>')[0]
+Select Apple's Standard EULA in App Store Connect. Do not paste this notice
+or the supplementary terms page into its custom-EULA field.
+"""
+from pathlib import Path
 
-out = []
-for m in re.finditer(r'<(h1|h2|h3|p|li)([^>]*)>(.*?)</\1>', body, re.S):
-    tag, inner = m.group(1), m.group(3)
-    # Keep actual legal links when flattening HTML for App Store Connect.
-    inner = re.sub(r'<a\s+href="([^"]+)"[^>]*>(.*?)</a>',
-                   lambda a: a.group(2) if a.group(1).startswith('mailto:')
-                   else a.group(2) + ' (' + urljoin('https://tally484.github.io/tally-legal/terms.html', a.group(1)) + ')',
-                   inner, flags=re.S)
-    t = re.sub(r'<[^>]+>', '', inner)
-    t = html.unescape(t).replace(' ', ' ')
-    t = re.sub(r'\s+', ' ', t).strip()
-    if not t:
-        continue
-    if tag == 'h1':
-        out += [t.upper(), '']
-    elif tag == 'h2':
-        out += ['', t.upper(), '']
-    elif tag == 'h3':
-        # A subsection: titled, but not shouted like a top-level heading.
-        out += ['', t, '']
-    elif tag == 'li':
-        out.append('- ' + t)
-    else:
-        # A paragraph straight after a list needs the blank line the list didn't add.
-        if out and out[-1].startswith('- '):
-            out.append('')
-        out += [t, '']
+NOTICE = """HEXIS — APPLE'S STANDARD EULA
+Updated 12 September 2026
 
-txt = re.sub(r'\n{3,}', '\n\n', '\n'.join(out)).strip() + '\n'
-io.open('eula.txt', 'w', encoding='utf-8').write(txt)
-print('chars: %d  lines: %d' % (len(txt), txt.count('\n')))
-print('non-ascii:', sorted({c for c in txt if ord(c) > 127}))
+Hexis uses Apple's Standard End User License Agreement:
+https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
+Supplementary subscription information and community rules:
+https://tally484.github.io/tally-legal/terms.html
+
+Privacy Policy:
+https://tally484.github.io/tally-legal/privacy.html
+
+This notice is not a custom EULA and does not replace or amend Apple's
+Standard EULA. Martin Elenjikkal remains the application provider.
+Support: martyelenjikkal@gmail.com
+"""
+
+if __name__ == "__main__":
+    Path(__file__).with_name("eula.txt").write_text(NOTICE, encoding="utf-8")
+    print("Updated standard-EULA notice; do not use the ASC custom-EULA field.")
