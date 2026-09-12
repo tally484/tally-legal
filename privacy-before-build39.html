@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>privacy policy</h1>
-<p class="sub">hexis — habit journal · effective 11 september 2026</p>
+<p class="sub">hexis — habit journal · earlier-build policy, revised 12 september 2026</p>
 
 <p>hexis is built to be private. the short version: <strong>your journal stays with you, and we never see it.</strong> there is no hexis server and no hexis account, so there is nowhere for your habits to go and no one here to read them. the only times anything leaves your device are ones you choose — iCloud sync, a group you start or join, a backup you export, a card you share, or an email you send us — and even then it goes to Apple or to whoever you sent it, never to a hexis system.</p>
 
@@ -16,7 +16,7 @@
 
 <h2>what we collect</h2>
 <p>nothing about you, and nothing out of your journal. hexis has no analytics SDK, no tracking, no advertising, no attribution, no crash reporting, and no hexis account.</p>
-<p><strong>hexis carries no third-party code that reports anywhere.</strong> the app talks to Apple and to nobody else: the App&nbsp;Store for purchases, and iCloud for sync and groups. see <a href="#history">what changed</a> for a service that appeared in test builds and has since been taken out.</p>
+<p><strong>hexis carries no third-party code that reports anywhere.</strong> the app talks to Apple and to nobody else: the App&nbsp;Store for purchases, and iCloud for sync and groups.</p>
 <p>the one way you can send us something is <a href="#contact-data">by writing to us</a> — a support email or a report from a group. that is set out below, because it is the one path where personal information can reach us, and only because you chose to send it.</p>
 
 <h2>where your data lives</h2>
@@ -63,13 +63,8 @@
 
 <h2>purchases</h2>
 <p>the money is Apple's business, not ours. subscriptions, any free trial, and the older one-time unlock are all handled through the App&nbsp;Store, on your App&nbsp;Store account. <strong>we never see your payment details</strong> — no card, no billing address, nothing of the sort ever reaches us or anyone acting for us.</p>
-<p>to work out what to unlock, <strong>hexis checks Apple's verified transaction and subscription information through StoreKit.</strong> product loading, purchasing and restoring communicate with Apple; entitlement information can also be read from StoreKit's local records. no RevenueCat service or other third-party purchase provider is involved, and the app does not send journal contents with these checks. offline access depends on the valid entitlement information available on the device; a restore or purchase may require an internet connection.</p>
+<p>to work out what to unlock, <strong>hexis checks Apple's verified transaction and subscription information through StoreKit.</strong> product loading, purchasing and restoring communicate with Apple; entitlement information can also be read from StoreKit's local records. the app does not send journal contents with these checks. offline access depends on the valid entitlement information available on the device; a restore or purchase may require an internet connection.</p>
 <p>you can manage or cancel a subscription in your App&nbsp;Store account settings.</p>
-
-<h2 id="history">what changed, and what came out</h2>
-<p>an earlier version of this page — dated 10 september 2026 — said hexis used a service called <strong>RevenueCat</strong> to check whether you had paid. that was written for a build in testing. <strong>it has been removed.</strong> the code is out of the app, and purchase checks now run against Apple alone, as described above.</p>
-<p>September pre-release builds included RevenueCat. when configured and used, that SDK could send purchase receipts, transaction information, an SDK-generated user identifier and device or app information to RevenueCat; journal contents were not part of that integration. the App&nbsp;Store release history checked on 11 september shows version 1.1 released on 15 august, before the September integration, while version 1.3 is not yet released. <strong>removing the SDK does not delete records that RevenueCat may already hold.</strong> if you used a pre-release build and want help requesting deletion of those records, <a href="#contact">write to us</a>. we will not claim deletion is complete until it has been confirmed.</p>
-<p>the current version uses Apple's StoreKit for purchases and contains no RevenueCat SDK.</p>
 
 <h2>diagnostics kept on your device</h2>
 <p>hexis writes a small log of its own first-run steps — that onboarding began, that a habit was made, that a day was first marked, that the hexis+ page was shown — with a timestamp on each. <strong>this is stored on your device and is not sent anywhere.</strong> there is no analytics service behind it and no code in the app that transmits it; it exists so the app's own screens can be reasoned about, and it goes when you delete the app. it holds no habit names, no marks, and nothing that identifies you.</p>
@@ -93,7 +88,7 @@
 <p>the one exception is the same one that applies to everybody: if a child writes to us, that email reaches us like any other. we do not knowingly solicit personal information from children, and if we learn that a child has sent us personal information we will delete it. a parent or guardian can ask us to do the same, at the address below.</p>
 
 <h2>changes</h2>
-<p>if this policy ever changes, the new version will be posted here with a new effective date. this version (11 september 2026) removes RevenueCat, which is no longer in the app; separates the silent background notifications groups use from the reminders you set; corrects what deleting the app does to a group you host; describes the edit receipts a group now carries; and says plainly what a support email or a report brings us. the previous version's account of those things is superseded.</p>
+<p>if this policy ever changes, the new version will be posted here with a new effective date. this earlier-build policy, revised 12 september 2026, separates the silent background notifications groups use from the reminders you set; corrects what deleting the app does to a group you host; describes the edit receipts a group now carries; and says plainly what a support email or a report brings us. the previous version's account of those things is superseded.</p>
 
 <h2 id="contact">contact</h2>
 <p>questions, or a request about your data? write to <a href="mailto:martyelenjikkal@gmail.com">martyelenjikkal@gmail.com</a> and it reaches the developer directly.</p>
