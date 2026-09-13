@@ -5,7 +5,7 @@ or the supplementary terms page into its custom-EULA field.
 """
 from pathlib import Path
 
-NOTICE = """HEXIS — END USER LICENCE
+NOTICE = """HEXIS — APPLE'S STANDARD EULA (NOTICE)
 Updated 14 September 2026
 
 Hexis uses Apple's Standard End User License Agreement:
