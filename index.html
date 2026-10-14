@@ -3,31 +3,417 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>hexis — support</title>
-<link rel="stylesheet" href="style.css">
+<title>hexis — a habit journal kept in ink</title>
+<meta name="description" content="hexis is a private habit tracker and journal for iPhone and Apple Watch. One mark a day, kept in ink — streaks that forgive a missed day, routines with timers, and a year of your practice on one page.">
+<meta name="apple-itunes-app" content="app-id=6790734249">
+<meta property="og:title" content="hexis — a habit journal kept in ink">
+<meta property="og:description" content="One mark a day. A private habit tracker and journal for iPhone and Apple Watch.">
+<meta property="og:image" content="https://tally484.github.io/tally-legal/img/og.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F6F4EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161411" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F6F4EE;
+    --card: #FFFDF8;
+    --ink: #231F1B;
+    --soft: #67635F;
+    --faint: #A29F9A;
+    --hairline: #D8D6D0;
+    --oxblood: #5C1A1A;
+    --accent: #B85C38;
+    --accent-fill: #944226;
+    --hex-on: #5C1A1A;
+    --hex-off: #E4DFD5;
+    --frame: #1D1A17;
+    --serif: ui-serif, "New York", "Newsreader", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #161411;
+      --card: #25221D;
+      --ink: #F1EEE8;
+      --soft: #B4AEA5;
+      --faint: #7C766D;
+      --hairline: #3A362F;
+      --oxblood: #E0A39E;
+      --accent: #D47850;
+      --accent-fill: #D47850;
+      --hex-on: #C88A84;
+      --hex-off: #2C2822;
+      --frame: #3A3630;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* header */
+  .top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand img { width: 34px; height: 34px; border-radius: 8px; }
+  .brand span { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .top nav { display: flex; gap: 22px; font-size: 15px; color: var(--soft); }
+  .top nav a { text-decoration: none; }
+  .top nav a:hover { color: var(--ink); }
+
+  /* hero */
+  .hero {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px;
+    align-items: center; padding: 40px 0 24px;
+  }
+  .eyebrow {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: lowercase;
+    color: var(--soft); margin: 0 0 14px;
+  }
+  h1 {
+    font-size: clamp(46px, 7vw, 78px); line-height: 1.02; font-weight: 600;
+    letter-spacing: -0.025em; margin: 0;
+  }
+  .lede {
+    font-style: italic; color: var(--oxblood);
+    font-size: clamp(20px, 2.3vw, 24px); margin: 14px 0 22px;
+  }
+  .hero p.body { color: var(--soft); max-width: 30em; margin: 0 0 30px; }
+  .cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .store {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+    background: var(--ink); color: var(--paper);
+    padding: 10px 22px 10px 18px; border-radius: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .store:hover { transform: translateY(-1px); background: var(--oxblood); }
+  .store svg { width: 24px; height: 30px; flex: none; }
+  .store span { display: flex; flex-direction: column; font-size: 22px; font-weight: 600; line-height: 1.05; letter-spacing: -0.01em; }
+  .store small { font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .cta small { font-size: 14px; color: var(--faint); font-style: italic; }
+
+  /* phone */
+  .phone {
+    width: 100%; max-width: 300px; margin: 0 auto;
+    background: var(--frame); padding: 10px; border-radius: 50px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset,
+                0 30px 60px -20px rgba(35,31,27,0.35),
+                0 12px 24px -12px rgba(35,31,27,0.25);
+  }
+  .phone img { border-radius: 40px; width: 100%; aspect-ratio: 1320 / 2868; }
+  .hero .phone { transform: rotate(2deg); }
+
+  /* the year */
+  .year { padding: 56px 0 8px; }
+  .year svg { width: 100%; height: auto; display: block; }
+  .year .caption {
+    display: flex; justify-content: space-between; font-size: 14px;
+    color: var(--faint); font-style: italic; margin-top: 10px;
+  }
+
+  /* sections */
+  section { padding: 72px 0; }
+  .rule { border: 0; border-top: 1px solid var(--hairline); margin: 0; }
+  h2 {
+    font-size: clamp(32px, 4.2vw, 46px); line-height: 1.08; font-weight: 600;
+    letter-spacing: -0.02em; margin: 0 0 12px;
+  }
+  .section-sub { font-style: italic; color: var(--oxblood); font-size: 20px; margin: 0 0 18px; }
+  .section-body { color: var(--soft); max-width: 32em; margin: 0; }
+
+  .feature {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+  }
+  .feature.flip .copy { order: 2; }
+  .feature .phone { max-width: 270px; }
+
+  .grid3 {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 48px;
+  }
+  .grid3 figure { margin: 0; }
+  .grid3 .phone { max-width: 240px; }
+  .grid3 figcaption { text-align: center; margin-top: 22px; }
+  .grid3 figcaption b { display: block; font-size: 21px; font-weight: 600; }
+  .grid3 figcaption span { color: var(--soft); font-size: 16px; font-style: italic; }
+  .watch {
+    width: 100%; max-width: 168px; margin: 0 auto; background: var(--frame);
+    padding: 12px; border-radius: 46px;
+    box-shadow: 0 24px 50px -20px rgba(35,31,27,0.35);
+  }
+  .watch img { border-radius: 34px; width: 100%; }
+  .watch-cell { display: flex; align-items: center; min-height: 100%; }
+
+  .list {
+    columns: 2; column-gap: 48px; list-style: none; padding: 0; margin: 32px 0 0;
+  }
+  .list li {
+    break-inside: avoid; padding: 12px 0 12px 26px; position: relative;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .list li::before {
+    content: ""; position: absolute; left: 2px; top: 22px; width: 10px; height: 11px;
+    background: var(--accent);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+
+  .private {
+    background: var(--card); border: 1px solid var(--hairline); border-radius: 28px;
+    padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  }
+  .private dl { margin: 0; }
+  .private dt { font-weight: 600; font-size: 19px; }
+  .private dd { margin: 2px 0 18px; color: var(--soft); font-size: 16px; }
+  .private dd:last-child { margin-bottom: 0; }
+
+  .plus { text-align: center; }
+  .plus .section-body { margin: 0 auto; }
+  .plus .tags {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    margin: 28px auto 0; max-width: 720px; padding: 0; list-style: none;
+  }
+  .plus .tags li {
+    border: 1px solid var(--hairline); border-radius: 999px; padding: 6px 16px;
+    font-size: 15px; color: var(--ink);
+  }
+  .plus .fine { font-size: 14px; color: var(--faint); font-style: italic; margin-top: 22px; }
+
+  .closing { text-align: center; padding: 88px 0 80px; }
+  .closing img.mark { width: 84px; height: 84px; border-radius: 19px; margin: 0 auto 26px;
+    box-shadow: 0 14px 30px -14px rgba(35,31,27,0.4); }
+  .closing .cta { justify-content: center; margin-top: 26px; }
+
+  footer {
+    border-top: 1px solid var(--hairline); padding: 32px 0 48px;
+    font-size: 14px; color: var(--soft);
+  }
+  footer .row { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
+  footer p { margin: 0; }
+  footer .was { margin-top: 14px; color: var(--faint); font-style: italic; }
+
+  @media (max-width: 820px) {
+    body { font-size: 17px; }
+    .top nav .hide-sm { display: none; }
+    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 16px; text-align: left; }
+    .hero .phone { max-width: 250px; transform: rotate(0); }
+    section { padding: 56px 0; }
+    .feature, .feature.flip { grid-template-columns: 1fr; gap: 36px; }
+    .feature.flip .copy { order: 0; }
+    .feature .phone { max-width: 240px; }
+    .grid3 { grid-template-columns: 1fr; gap: 48px; }
+    .list { columns: 1; }
+    .private { grid-template-columns: 1fr; padding: 32px 24px; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .wrap { padding: 0 16px; }
+    .eyebrow { letter-spacing: 0.08em; font-size: 12px; }
+    .top nav { gap: 16px; }
+  }
+</style>
 </head>
 <body>
-<h1>hexis</h1>
-<p class="sub">a quiet habit journal for iPhone and Apple Watch</p>
 
-<p>hexis is a minimal, ink-on-paper habit tracker. one mark a day — a tap, or the hours and pages you set yourself — one hexagon filled, streaks that forgive a rest day. a year of your practice on a single page, with hexis+.</p>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./"><img src="img/icon-128.png" alt=""><span>hexis</span></a>
+    <nav>
+      <a class="hide-sm" href="#features">features</a>
+      <a class="hide-sm" href="#privacy">privacy</a>
+      <a href="support.html">support</a>
+    </nav>
+  </header>
 
-<p><em>hexis was called tally until august 2026 — same app, same developer. this site kept its old address through the change.</em></p>
+  <div class="hero">
+    <div>
+      <p class="eyebrow">habit tracker &amp; journal · iPhone &amp; Apple Watch</p>
+      <h1>Make your&nbsp;mark.</h1>
+      <p class="lede">a year of days, kept in ink</p>
+      <p class="body">hexis is a quiet, private habit journal with a paper-and-ink feel. One tap and the day is done. Streaks that forgive a missed day. Your whole year on one page.</p>
+      <div class="cta">
+        <a class="store" href="https://apps.apple.com/app/id6790734249" aria-label="Download hexis on the App Store">
+          <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          <span><small>Download on the</small>App Store</span>
+        </a>
+        <small>free to start · no account needed</small>
+      </div>
+    </div>
+    <div class="phone"><img src="img/today-ink.webp" alt="The hexis Today screen: four habits for 8 October, all kept, with a 34-day streak"></div>
+  </div>
 
-<h2>support</h2>
-<p>found a bug, have a question, or want to suggest something? email <a href="mailto:martyelenjikkal@gmail.com">martyelenjikkal@gmail.com</a> to reach the developer directly.</p>
+  <div class="year" aria-hidden="true">
+    <svg id="year" viewBox="0 0 1000 135" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="caption"><span>january</span><span>one hexagon for every day you show up</span><span>december</span></div>
+  </div>
+</div>
 
-<h2>subscriptions</h2>
-<p>hexis+ is billed through your App&nbsp;Store account. to change or cancel a plan, open Settings&nbsp;›&nbsp;your&nbsp;name&nbsp;›&nbsp;Subscriptions on your iPhone. purchases can be restored on any device signed in to the same Apple&nbsp;ID, from settings inside the app. hexis+ is sold as a yearly or a weekly plan; the monthly plan and the one-time lifetime unlock are no longer sold, but are still honoured if you hold one. the full billing terms — renewal, the free trial on the yearly plan, switching plans, and how a price change is handled — are in the <a href="terms.html">terms of use</a>.</p>
+<section id="features">
+  <div class="wrap feature">
+    <div class="copy">
+      <h2>Watch it all add up.</h2>
+      <p class="section-sub">every day you showed up, kept in ink</p>
+      <p class="section-body">Every mark stays on the page. Look back at streaks, totals and consistency in a record you can read at a glance. Track a simple yes or no, or set an amount, like 20 pages or 30 minutes, and check in as you go.</p>
+    </div>
+    <div class="phone"><img src="img/marks-indigo.webp" alt="A habit's page: 192 days done, drawn as tally marks, with a consistency line" loading="lazy"></div>
+  </div>
+</section>
 
-<h2>privacy</h2>
-<p>your journal is stored on your devices, with optional private iCloud sync for habits and related journal state. routines stay local. the app also sends a habit snapshot to your paired Apple Watch. there are no ads, tracking or developer-operated journal servers; where a version of hexis offers groups, a group is hosted in its creator’s own iCloud. Apple handles purchases, and RevenueCat, a purchase-verification service that receives an anonymous purchase record and no journal content, confirms whether a device has hexis+; reports received through the app and information you deliberately email to support are accessible to the developer. see the <a href="privacy.html">privacy policy</a> for the full details, including backups and signatures.</p>
+<hr class="rule wrap" style="max-width:1032px">
 
-<h2>groups</h2>
-<p>groups is a hexis+ feature that lets a few people keep one habit side by side. not every version of hexis has it — if your copy has no Groups tab, nothing in this section applies, and the app does not create or join shared groups.</p>
-<p>where it is offered: each person needs a hexis+ entitlement and an iCloud account. new groups use private invitations, with no public feed or directory. a group is hosted in its creator’s own iCloud, so the developer cannot read or remove its names and marks. every member row offers report and block. blocking works offline and hides that person locally; it does not revoke their access. a report is written on your device and emailed to the developer by you — nothing uploads on its own, and it never goes into the group. saving one means it is waiting for you to send, not that anyone has read it. for urgent safety concerns, contact the appropriate local authorities. what a group shares is listed in the <a href="privacy.html#groups">privacy policy</a>, and the conduct rules are in the <a href="terms.html#groups">terms</a>.</p>
-<p>groups made in earlier TestFlight builds could be joined through a public invitation link. installing a later version does not change those — open the group and check Manage Access, or end it. see the <a href="privacy.html#older-groups">note on earlier groups</a>.</p>
-<h2>terms</h2>
-<p>hexis uses <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple’s Standard EULA</a>. our <a href="terms.html">terms of use page</a> provides supplementary subscription information; it does not replace Apple’s licence agreement.</p>
+<section>
+  <div class="wrap feature flip">
+    <div class="copy">
+      <h2>Miss a day. Keep&nbsp;going.</h2>
+      <p class="section-sub">mends, not guilt</p>
+      <p class="section-body">Your journal starts with three mends, and every full week you keep a habit earns another, up to three at a time. Use one to carry a streak over a missed day, without pretending the day never happened. Then step back and see the whole year, one hexagon for every day you showed up.</p>
+    </div>
+    <div class="phone"><img src="img/stats-oxblood.webp" alt="The stats page: a week at 100%, a consistency chart, and the whole year as a field of hexagons" loading="lazy"></div>
+  </div>
+</section>
+
+<section style="padding-top:24px">
+  <div class="wrap">
+    <h2>Everything in its place.</h2>
+    <p class="section-sub">built to be opened every day</p>
+    <div class="grid3">
+      <figure>
+        <div class="phone"><img src="img/routine-indigo.webp" alt="A morning routine, step one of three, with a timer at 55 seconds" loading="lazy"></div>
+        <figcaption><b>Follow the morning</b><span>routines with ordered steps, timers and a stopwatch</span></figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="img/home-month-oxblood.webp" alt="An iPhone Home Screen with the hexis month widget" loading="lazy"></div>
+        <figcaption><b>On your Home Screen</b><span>widgets that show the month at a glance</span></figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="img/settings-indigo.webp" alt="Stationery settings: inks, papers and page textures" loading="lazy"></div>
+        <figcaption><b>Make it yours</b><span>choose your ink, your paper, your page</span></figcaption>
+      </figure>
+    </div>
+
+    <ul class="list">
+      <li>Daily or flexible weekly targets</li>
+      <li>Amounts for pages, minutes, kilometres and more</li>
+      <li>Habits to quit, as well as habits to build</li>
+      <li>An Apple Watch app with complications</li>
+      <li>Tasks on Apple Calendar, if you want them there</li>
+      <li>Local reminders you control</li>
+      <li>Light, dark, paper and ink styles</li>
+      <li>Private groups to keep one habit together</li>
+    </ul>
+  </div>
+</section>
+
+<section id="privacy" style="padding-top:24px">
+  <div class="wrap">
+    <div class="private">
+      <div>
+        <h2>Private by design.</h2>
+        <p class="section-sub">your journal is yours</p>
+        <p class="section-body">There's no hexis account to make and no server holding your journal. It lives on your devices, and only in your own iCloud if you turn on sync.</p>
+      </div>
+      <dl>
+        <dt>No ads, no tracking</dt>
+        <dd>Nothing in hexis follows you around the web, and nothing is sold.</dd>
+        <dt>Your iCloud, not ours</dt>
+        <dd>Optional sync keeps habits and their progress in your private iCloud. Routines stay on your device.</dd>
+        <dt>Groups you invite to</dt>
+        <dd>A group shares one habit with people you invite yourself. It has no public feed and no profiles anyone can discover.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="plus">
+  <div class="wrap">
+    <h2>hexis+</h2>
+    <p class="section-sub">for the whole year on one page</p>
+    <p class="section-body">Start free with your first habits. hexis+ opens everything else.</p>
+    <ul class="tags">
+      <li>unlimited habits</li>
+      <li>your full year</li>
+      <li>complete statistics</li>
+      <li>private groups</li>
+      <li>premium papers &amp; inks</li>
+      <li>habits to quit</li>
+    </ul>
+    <p class="fine">yearly, with a seven-day free trial for eligible new subscribers, or weekly. Renews automatically unless cancelled in your App Store account. <a href="terms.html">Terms</a></p>
+  </div>
+</section>
+
+<div class="wrap closing">
+  <img class="mark" src="apple-touch-icon.png" alt="">
+  <h2>Start with one habit.</h2>
+  <p class="section-sub">make the first mark</p>
+  <div class="cta">
+    <a class="store" href="https://apps.apple.com/app/id6790734249" aria-label="Download hexis on the App Store">
+          <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          <span><small>Download on the</small>App Store</span>
+        </a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Questions or bugs? Email <a href="mailto:martyelenjikkal@gmail.com">martyelenjikkal@gmail.com</a>. It goes straight to the developer.</p>
+      <nav>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+    <p class="was">hexis was called tally until August 2026. Same app, same developer.</p>
+  </div>
+</footer>
+
+<script>
+  // A year of days as a honeycomb: 53 weeks by 7 days, filled more densely
+  // as the year goes on. Seeded, so it draws the same field every load.
+  (function () {
+    var svg = document.getElementById('year');
+    if (!svg) return;
+    var cols = 53, rows = 7, r = 10.6;
+    var w = Math.sqrt(3) * r, h = 1.5 * r;
+    var ox = (1000 - (cols * w + w / 2)) / 2 + w / 2, oy = (135 - (rows - 1) * h) / 2;
+    var seed = 20261014;
+    function rand() { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
+    var pts = [];
+    for (var k = 0; k < 6; k++) {
+      var a = Math.PI / 180 * (60 * k - 30);
+      pts.push([(r - 1.1) * Math.cos(a), (r - 1.1) * Math.sin(a)]);
+    }
+    var on = [], off = [];
+    var today = 287; // 14 october
+    for (var c = 0; c < cols; c++) {
+      for (var d = 0; d < rows; d++) {
+        var day = c * 7 + d;
+        if (day > 364) continue;
+        var cx = ox + c * w + (d % 2 ? w / 2 : 0), cy = oy + d * h;
+        var path = 'M' + pts.map(function (p) { return (cx + p[0]).toFixed(1) + ' ' + (cy + p[1]).toFixed(1); }).join('L') + 'Z';
+        var p = 0.25 + 0.7 * Math.min(1, day / 220);
+        if (day <= today && rand() < p) on.push(path); else off.push(path);
+      }
+    }
+    svg.innerHTML =
+      '<path d="' + off.join('') + '" fill="var(--hex-off)"/>' +
+      '<path d="' + on.join('') + '" fill="var(--hex-on)"/>';
+  })();
+</script>
 </body>
 </html>
