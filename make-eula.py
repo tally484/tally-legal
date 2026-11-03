@@ -19,7 +19,7 @@ https://tally484.github.io/tally-legal/privacy.html
 
 This notice is not a custom EULA and does not replace or amend Apple's
 Standard EULA. Martin Elenjikkal remains the application provider.
-Support: martyelenjikkal@gmail.com
+Support: hexis.habits@gmail.com
 """
 
 if __name__ == "__main__":
