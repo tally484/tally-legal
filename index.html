@@ -36,7 +36,8 @@
     --band: #3F1217;
     --band-ink: #F4ECE0;
     --band-soft: #C28787;
-    --shadow: rgba(35,31,27,0.32);
+    --shadow: rgba(35,31,27,0.22);
+    --shadow-near: rgba(35,31,27,0.12);
     --serif: ui-serif, "New York", "Newsreader", Georgia, "Times New Roman", serif;
     --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     --ease: cubic-bezier(.2,.7,.2,1);
@@ -57,7 +58,8 @@
       --hex-off: #26221D;
       --frame: #3A3630;
       --band: #2A0C0F;
-      --shadow: rgba(0,0,0,0.6);
+      --shadow: rgba(0,0,0,0.55);
+      --shadow-near: rgba(0,0,0,0.35);
     }
   }
 
@@ -117,7 +119,7 @@
   /* ───────── hero: a dictionary entry, and the honeycomb building in ───────── */
   .hero { position: relative; overflow: hidden; }
   .field { position: absolute; display: block; pointer-events: none; }
-  .hero .field { top: 0; bottom: 0; right: 0; width: 58%; height: 100%; }
+  .hero .field { top: 0; bottom: 0; right: 0; width: 54%; height: 100%; }
   .hero-grid {
     position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px;
     align-items: center; min-height: min(820px, calc(100svh - 72px)); padding: 40px 0 64px;
@@ -168,23 +170,15 @@
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   }
 
-  .hero-phone { display: grid; place-items: center; }
-  .hero-phone .phone { max-width: 304px; transform: rotate(-2.5deg); }
+  /* the hero pair: iPhone 17 Pro Max with an Apple Watch Series 11 in front */
+  .hero-devices { position: relative; justify-self: center; width: min(100%, 420px); padding: 0 0 0 70px; }
+  .hero-devices .iphone { width: 100%; max-width: 330px; margin-left: auto; }
+  .hero-devices .watch { position: absolute; left: 0; bottom: 6%; width: 38%; max-width: 150px; }
 
-  /* ───────── phone & watch frames ───────── */
-  .phone {
-    width: 100%; max-width: 280px; margin: 0 auto;
-    background: var(--frame); padding: 9px; border-radius: 50px;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.07),
-                0 40px 70px -30px var(--shadow),
-                0 14px 28px -16px var(--shadow);
-  }
-  .phone img { border-radius: 41px; width: 100%; aspect-ratio: 600 / 1304; }
-  .watch {
-    width: 100%; max-width: 172px; margin: 0 auto; background: var(--frame);
-    padding: 11px; border-radius: 48px; box-shadow: 0 30px 50px -24px var(--shadow);
-  }
-  .watch img { border-radius: 38px; width: 100%; }
+  /* ───────── real devices ───────── */
+  .iphone, .watch { display: block; height: auto; filter: drop-shadow(0 28px 30px var(--shadow)) drop-shadow(0 6px 8px var(--shadow-near)); }
+  .iphone { width: 100%; max-width: 300px; aspect-ratio: 720 / 1493; margin: 0 auto; }
+  .watch { width: 100%; max-width: 190px; aspect-ratio: 400 / 629; margin: 0 auto; }
 
   /* ───────── the year ───────── */
   .year { padding: 64px 0 24px; }
@@ -211,35 +205,30 @@
   .copy-body { color: var(--soft); max-width: 31em; margin: 0; }
 
   .sense {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
-    padding: 72px 0; border-top: 1px solid var(--hairline);
+    display: grid; grid-template-columns: 5fr 6fr; gap: 80px; align-items: center;
+    padding: 48px 0;
   }
-  .sense:first-child { border-top: 0; padding-top: 24px; }
+  .sense:first-child { padding-top: 0; }
+  .sense.flip { grid-template-columns: 6fr 5fr; }
   .sense.flip .copy { order: 2; }
-  .num {
-    display: flex; align-items: center; gap: 16px; margin-bottom: 22px;
-    font-style: italic; color: var(--accent); font-size: 22px;
+  .num { display: flex; align-items: center; gap: 14px; margin: 0 0 20px; }
+  .num b { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; color: var(--accent); }
+  .num::after { content: ""; height: 1px; width: 40px; background: var(--hairline); }
+  .panel {
+    position: relative; overflow: hidden; height: 560px; border-radius: 32px;
+    background: var(--mat); padding-top: 64px;
   }
-  .num::after { content: ""; height: 1px; width: 56px; background: var(--accent); opacity: .5; }
-  .plate { position: relative; display: grid; place-items: center; padding: 40px 0; }
-  .plate::before {
-    content: ""; position: absolute; width: min(460px, 100%); aspect-ratio: 1 / 1.1547;
-    background: var(--mat);
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  }
-  .plate .phone { position: relative; max-width: 270px; }
+  .panel .iphone { max-width: 300px; }
 
   /* ───────── in its place ───────── */
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
   .card {
-    margin: 0; background: var(--card); border: 1px solid var(--hairline); border-radius: 28px;
-    padding: 36px 28px 30px; display: flex; flex-direction: column;
-    transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+    margin: 0; background: var(--mat); border-radius: 28px;
+    padding: 40px 30px 32px; display: flex; flex-direction: column;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 30px 50px -36px var(--shadow); }
-  .card .shot { flex: 1; display: grid; place-items: center; min-height: 300px; margin-bottom: 26px; }
-  .card .phone { max-width: 200px; border-radius: 38px; padding: 7px; }
-  .card .phone img { border-radius: 31px; }
+  .card .shot { height: 430px; display: grid; place-items: center; margin-bottom: 28px; }
+  .card .iphone { max-width: 196px; }
+  .card .watch { max-width: 176px; }
   .card b { display: block; font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
   .card span { color: var(--soft); font-size: 16px; font-style: italic; }
 
@@ -294,7 +283,7 @@
   @media (prefers-reduced-motion: no-preference) {
     .rise { opacity: 0; transform: translateY(16px); animation: rise 1s var(--ease) forwards; animation-delay: calc(var(--i, 0) * 90ms + 80ms); }
     .entry hr.rise { transform: scaleX(0); animation-name: draw; animation-duration: 1.2s; }
-    .hero-phone.rise { transform: translateY(28px); animation-duration: 1.3s; }
+    .hero-devices.rise { transform: translateY(28px); animation-duration: 1.3s; }
     @keyframes rise { to { opacity: 1; transform: none; } }
     @keyframes draw { to { opacity: 1; transform: scaleX(1); } }
     .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: var(--rd, 0s); }
@@ -310,14 +299,14 @@
     .hero .field { top: auto; bottom: 0; height: 620px; width: 100%; }
     .hero-grid { grid-template-columns: 1fr; gap: 48px; min-height: 0; padding: 36px 0 72px; }
     .entry .label { margin-bottom: 30px; }
-    .hero-phone .phone { max-width: 250px; }
+    .hero-devices { width: min(100%, 330px); padding-left: 52px; }
     section { padding: 72px 0; }
-    .sense, .sense.flip { grid-template-columns: 1fr; gap: 12px; padding: 56px 0; }
+    .sense, .sense.flip { grid-template-columns: 1fr; gap: 32px; padding: 40px 0; }
     .sense.flip .copy { order: 0; }
-    .plate::before { width: min(380px, 100%); }
-    .plate .phone { max-width: 236px; }
+    .panel { height: 460px; padding-top: 44px; border-radius: 26px; }
+    .panel .iphone { max-width: 240px; }
     .cards { grid-template-columns: 1fr; }
-    .card .shot { min-height: 0; }
+    .card .shot { height: 400px; }
     .glossary { grid-template-columns: 1fr; }
     .private { grid-template-columns: 1fr; padding: 40px 28px; gap: 28px; }
     .band-inner { padding: 88px 0 300px; }
@@ -377,8 +366,9 @@
         <li>no ads, no tracking</li>
       </ul>
     </div>
-    <div class="hero-phone rise" style="--i:3">
-      <div class="phone"><img src="img/today-ink.webp" alt="The hexis Today screen: four habits for 8 October, all kept, with a 34-day streak"></div>
+    <div class="hero-devices rise" style="--i:3">
+      <img class="iphone" src="img/device-today-ink.webp" width="720" height="1493" alt="hexis on iPhone: four habits for 8 October, all kept, with a 34-day streak">
+      <img class="watch" src="img/device-watch-indigo.webp" width="400" height="629" alt="hexis on Apple Watch, with the same day's habits">
     </div>
   </div>
 </div>
@@ -401,32 +391,32 @@
   <div class="wrap">
     <div class="sense reveal">
       <div class="copy">
-        <div class="num">1.</div>
+        <div class="num"><b>01 · PROGRESS</b></div>
         <h2>Watch it all add&nbsp;up.</h2>
         <p class="sub">every day you showed up, kept in ink</p>
         <p class="copy-body">Every mark stays on the page. Look back at streaks, totals and consistency in a record you can read at a glance. Track a simple yes or no, or set an amount, like 20 pages or 30 minutes, and check in as you go.</p>
       </div>
-      <div class="plate"><div class="phone"><img src="img/marks-indigo.webp" alt="A habit's page: 192 days done, drawn as tally marks, with a consistency line" loading="lazy"></div></div>
+      <div class="panel"><img class="iphone" src="img/device-marks-indigo.webp" width="720" height="1493" alt="A habit's page: 192 days done, drawn as tally marks, with a consistency line" loading="lazy"></div>
     </div>
 
     <div class="sense flip reveal">
       <div class="copy">
-        <div class="num">2.</div>
+        <div class="num"><b>02 · FORGIVENESS</b></div>
         <h2>Miss a day. Keep&nbsp;going.</h2>
         <p class="sub">mends, not guilt</p>
         <p class="copy-body">Your journal starts with three mends, and every full week you keep a habit earns another, up to three at a time. Use one to carry a streak over a missed day, without pretending the day never happened. Then step back and see the whole year, one hexagon for every day you showed up.</p>
       </div>
-      <div class="plate"><div class="phone"><img src="img/stats-oxblood.webp" alt="The stats page: a week at 100%, a consistency chart, and the whole year as a field of hexagons" loading="lazy"></div></div>
+      <div class="panel"><img class="iphone" src="img/device-stats-oxblood.webp" width="720" height="1493" alt="The stats page: a week at 100%, a consistency chart, and the whole year as a field of hexagons" loading="lazy"></div>
     </div>
 
     <div class="sense reveal">
       <div class="copy">
-        <div class="num">3.</div>
+        <div class="num"><b>03 · ROUTINES</b></div>
         <h2>Follow the&nbsp;morning.</h2>
         <p class="sub">routines, one step at a time</p>
         <p class="copy-body">Put a routine in order, give each step a timer or a stopwatch, and let hexis walk you through it. Routines sit beside your habits as a practice to follow, not another streak to protect.</p>
       </div>
-      <div class="plate"><div class="phone"><img src="img/routine-indigo.webp" alt="A morning routine, step one of three, with a timer at 55 seconds" loading="lazy"></div></div>
+      <div class="panel"><img class="iphone" src="img/device-routine-indigo.webp" width="720" height="1493" alt="A morning routine, step one of three, with a timer at 55 seconds" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -439,15 +429,15 @@
     </div>
     <div class="cards">
       <figure class="card reveal">
-        <div class="shot"><div class="phone"><img src="img/home-month-oxblood.webp" alt="An iPhone Home Screen with the hexis month widget" loading="lazy"></div></div>
+        <div class="shot"><img class="iphone" src="img/device-home-month-oxblood.webp" width="720" height="1493" alt="An iPhone Home Screen with the hexis month widget" loading="lazy"></div>
         <figcaption><b>On your Home Screen</b><span>widgets that show the month at a glance</span></figcaption>
       </figure>
       <figure class="card reveal" style="--rd:.1s">
-        <div class="shot"><div class="watch"><img src="img/watch-indigo.webp" alt="hexis on Apple Watch" loading="lazy"></div></div>
+        <div class="shot"><img class="watch" src="img/device-watch-indigo.webp" width="400" height="629" alt="hexis on Apple Watch" loading="lazy"></div>
         <figcaption><b>On your wrist</b><span>check in from Apple Watch, with complications</span></figcaption>
       </figure>
       <figure class="card reveal" style="--rd:.2s">
-        <div class="shot"><div class="phone"><img src="img/settings-indigo.webp" alt="Stationery settings: inks, papers and page textures" loading="lazy"></div></div>
+        <div class="shot"><img class="iphone" src="img/device-settings-indigo.webp" width="720" height="1493" alt="Stationery settings: inks, papers and page textures" loading="lazy"></div>
         <figcaption><b>Make it yours</b><span>choose your ink, your paper, your page</span></figcaption>
       </figure>
     </div>
@@ -642,7 +632,7 @@
         var T = tiles[i], s = T.g, tone = T.t;
         if (!still) {
           // a slow breath travels out through the field; specks swell the most
-          s *= 1 + 0.16 * (1 - T.g * 0.75) * Math.sin(time * 0.9 - T.d * 0.006);
+          s *= 1 + 0.07 * (1 - T.g * 0.8) * Math.sin(time * 0.6 - T.d * 0.005);
           if (pointer) {
             var dx = T.x - pointer.x, dy = T.y - pointer.y, dd = Math.sqrt(dx * dx + dy * dy);
             if (dd < 170) { var p = 1 - dd / 170; p = p * p; s += 0.32 * p * (1 - s * 0.6); tone += 0.12 * p; }
@@ -666,7 +656,7 @@
         ctx.fillStyle = pal.glint; ctx.strokeStyle = pal.glint; ctx.lineWidth = ground;
         ctx.fill(); ctx.stroke(); ctx.globalAlpha = 1;
       }
-      if (!still && now > nextGlint && tiles.length) {
+      if (opts.glints && !still && now > nextGlint && tiles.length) {
         for (var tries = 0; tries < 12; tries++) {
           var cand = tiles[(Math.random() * tiles.length) | 0];
           if (cand.g > 0.55 && cand.t < 0.85) { glints.push({ tile: cand, start: now }); break; }
@@ -691,7 +681,7 @@
     if (darkQ.addEventListener) darkQ.addEventListener('change', function () { palette(); draw(performance.now()); });
     if (reduce.addEventListener) reduce.addEventListener('change', function () { draw(performance.now()); start(); });
     var host = canvas.parentNode;
-    host.addEventListener('pointermove', function (e) {
+    if (opts.pointer) host.addEventListener('pointermove', function (e) {
       if (e.pointerType !== 'mouse') return;
       var b = canvas.getBoundingClientRect();
       pointer = { x: e.clientX - b.left, y: e.clientY - b.top };
