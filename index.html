@@ -581,7 +581,7 @@
   }
   var PALETTES = {
     light: { ramp: lut([[0, [230, 219, 200]], [.30, [222, 206, 182]], [.52, [210, 172, 160]], [.74, [176, 104, 88]], [.90, [132, 52, 46]], [1, [85, 27, 29]]]), glint: '#B85C38' },
-    dark:  { ramp: lut([[0, [38, 33, 31]], [.30, [52, 42, 38]], [.52, [78, 50, 45]], [.74, [112, 62, 54]], [.90, [146, 82, 70]], [1, [178, 108, 94]]]), glint: '#CC977C' },
+    dark:  { ramp: lut([[0, [34, 30, 27]], [.30, [46, 38, 34]], [.52, [66, 44, 40]], [.74, [94, 54, 48]], [.90, [120, 68, 58]], [1, [146, 86, 74]]]), glint: '#CC977C' },
     band:  { ramp: lut([[0, [78, 24, 30]], [.35, [98, 34, 36]], [.65, [140, 60, 52]], [.85, [176, 104, 92]], [1, [210, 160, 146]]]), glint: '#D47850' },
     bandDark: { ramp: lut([[0, [56, 17, 22]], [.35, [76, 26, 30]], [.65, [112, 50, 46]], [.85, [148, 84, 74]], [1, [180, 124, 110]]]), glint: '#D47850' }
   };
@@ -694,7 +694,7 @@
   if (heroCanvas && heroCanvas.getContext) {
     Halftone(heroCanvas, {
       light: 'light', dark: 'dark',
-      radius: function (W) { return narrow.matches ? 14 : Math.max(17, Math.min(23, W / 36)); },
+      radius: function (W) { return narrow.matches ? 11 : Math.max(14, Math.min(18, W / 44)); },
       shape: function (x, y, W, H) {
         var ux = x / W, uy = y / H, d = Math.hypot(W - x, H - y);
         if (narrow.matches) {
@@ -713,7 +713,7 @@
   if (bandCanvas && bandCanvas.getContext) {
     Halftone(bandCanvas, {
       light: 'band', dark: 'bandDark',
-      radius: function (W) { return W < 700 ? 15 : 24; },
+      radius: function (W) { return W < 700 ? 12 : 18; },
       shape: function (x, y, W, H) {
         var ux = x / W, uy = y / H, p;
         if (W < 900) p = 0.5 * ux + 1.0 * uy - 0.62;
